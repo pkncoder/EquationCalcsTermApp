@@ -1,9 +1,18 @@
 from math import sqrt
 import click
 
+# Main group of all commands
 @click.group()
 def cli():
     pass
+
+
+# Just the generic solver
+@click.command(name=".")
+@click.argument("equation")
+def solveGeneric(equation):
+    print(eval(equation))
+
 
 # This command takes point one and point two (givin by user)
 # It prints the distance between them
@@ -131,6 +140,7 @@ def pythagHypeLeg(hype, leg):
 
 
 # Add the commands
+cli.add_command(solveGeneric)
 cli.add_command(distance)
 cli.add_command(midpoint)
 cli.add_command(ratioPointSplit)
